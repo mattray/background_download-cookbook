@@ -1,0 +1,30 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  always_update_cookbooks: true
+  chef_license: accept
+  product_name: chef
+  product_version: 16
+
+verifier:
+  name: inspec
+  color: false
+
+platforms:
+  - name: centos-7
+  - name: ubuntu-18.04
+
+suites:
+  - name: 15-default
+    provisioner:
+      product_version: 15
+    verifier:
+      inspec_tests:
+        - test/integration/default
+  - name: 16-default
+    verifier:
+      inspec_tests:
+        - test/integration/default
