@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# run curl command
+curl <%= @url %> --insecure --location --silent --output <%= @file %>
+
+# set group/owner
+# set permissions
+
+# delete the .downloading file
+rm -f <%= @file %>.downloading

@@ -7,4 +7,11 @@ This file is used to list changes made in each version of the background_downloa
 Initial release.
 
 - custom resource `background_download`
-- helper method `background_download_completed?`
+- helper method `BackgroundDownload::completed?`
+
+## BACKLOG
+
+`group` A string identifying the file group owner by name.
+`mode` A quoted 3-5 character string that defines the octal mode.
+`options` Any additional CLI options that may need to be passed to the  `curl` command.
+`owner` A string identifying the file owner by user name.

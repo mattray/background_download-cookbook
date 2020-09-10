@@ -18,13 +18,13 @@ platforms:
   - name: ubuntu-18.04
 
 suites:
-  - name: 15-default
-    provisioner:
-      product_version: 15
+  - name: default
     verifier:
       inspec_tests:
         - test/integration/default
-  - name: 16-default
+  - name: fifteen
+    provisioner:
+      product_version: 15
     verifier:
       inspec_tests:
         - test/integration/default

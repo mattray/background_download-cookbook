@@ -1,6 +1,6 @@
 # background_download cookbook
 
-This cookbook is used to download large files without blocking on them. It provides a custom resource `background_download` and the `background_download_completed?` method.
+This cookbook is used to download large files without blocking on them. It provides a custom resource `background_download` and the `BackgroundDownload::completed?` method.
 
 ## Prerequisites
 
@@ -26,23 +26,15 @@ end
 
 `path` The full path to the file, including the file name and its extension. Default value: the name of the resource block.
 
-`group` A string identifying the file group owner by name.
-
-`mode` A quoted 3-5 character string that defines the octal mode.
-
-`options` Any additional CLI options that may need to be passed to the  `curl` command.
-
-`owner` A string identifying the file owner by user name.
-
 ## Method
 
-The `background_download_completed?` method may be used for `not_if` or `only_if` blocks so other resources will know if the download has completed.
+The `BackgroundDownload::completed?` method may be used for `not_if` or `only_if` blocks so other resources will know if the download has completed.
 
 Example:
 ```
 execute 'burn iso' do
   command '/root/burn.sh /var/cache/downloads/archlinux-2020.08.01-x86_64.iso'
-  only_if { background_download_completed?('/var/cache/downloads/archlinux-2020.08.01-x86_64.iso') }
+  only_if { BackgroundDownload::completed?('/var/cache/downloads/archlinux-2020.08.01-x86_64.iso') }
   action :run
 end
 
